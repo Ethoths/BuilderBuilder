@@ -33,9 +33,7 @@ namespace BuilderBuilder
                     var fieldName = GetTypeName(propertyInfo.PropertyType.ToString());
 
                     // Is it a simple type or does it need a builder?
-
-
-
+                    
                     if (fieldName.EndsWith("[]"))
                     {
                         fieldName = fieldName.Substring(0, fieldName.Length - 2);
