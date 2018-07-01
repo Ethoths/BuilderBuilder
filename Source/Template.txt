@@ -1,0 +1,24 @@
+﻿[NAMESPACES]
+
+namespace [NAMESPACE]
+{
+    public class [CLASSNAME]Builder : BuilderBase, IBuilder
+    {
+        [FIELDS]
+
+        [PROPERTIES]
+        
+        public [CLASSNAME]
+        {
+            [CONSTRUCTOR]
+        }
+
+        public [CLASSNAME] Build
+        { 
+            return new [CLASSNAME]
+            {
+				[INITIALISERS]
+            };
+        }
+    }
+}

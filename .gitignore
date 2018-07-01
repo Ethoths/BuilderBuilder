@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/BuilderBuilder/v15
+/Source/.vs/BuilderBuilder/v15
+/Source/bin/Debug
+/Source/obj/Debug
+/Test/TestModels/bin
+/Test/TestModels/obj/Debug
