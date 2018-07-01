@@ -34,6 +34,8 @@ namespace BuilderBuilder
 
                     // Is it a simple type or does it need a builder?
                     
+
+
                     if (fieldName.EndsWith("[]"))
                     {
                         fieldName = fieldName.Substring(0, fieldName.Length - 2);
