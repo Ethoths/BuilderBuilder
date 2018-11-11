@@ -9,7 +9,7 @@ namespace BuilderBuilder
 {   
     public class Program
     {
-        private List<string> _nameSpaces = new List<string>();
+        private readonly List<string> _nameSpaces = new List<string>();
 
         public void Run(string assembly)
         {
@@ -20,7 +20,6 @@ namespace BuilderBuilder
             {
                 var boilerPlate = CreateBoilerPlate(classe);                                                
                 var propertyInfos = classe.GetProperties(BindingFlags.Public | BindingFlags.Instance);
-
                 var fields = new List<string>();
                 var properties = new List<string>();
                 var initialisers = new List<string>();
@@ -42,18 +41,16 @@ namespace BuilderBuilder
                         field = string.Format("private List<{0}Builder> _{1}Builders = new List<{0}Builder>();", DeAlias(fieldName), DeCapitalise(propertyInfo.Name));
                         initialisers.Add(propertyInfo.Name);
                         fields.Add(field);
-
                         constructors.Add(string.Format("{1}Builder.Add(new {0}Builder())", DeAlias(fieldName), DeCapitalise(propertyInfo.Name)));
                     }
                     else
                     {
-                        field = string.Format("private {0} _{1} = Randomiser.{2}();", DeAlias(fieldName), DeCapitalise(propertyInfo.Name), fieldName);
+                        field = $"private {DeAlias(fieldName)} _{DeCapitalise(propertyInfo.Name)} = Randomiser.{fieldName}();";
                         initialisers.Add(propertyInfo.Name);
                         fields.Add(field);
                     }
 
                     Console.WriteLine(field);
-
                     var property = string.Format("public {0}Builder {1}({2} {3}){4}{5}{{{4}{5}{5}_{3} = {3};{4}{4}{5}{5}return this;{4}{5}}}", classe.Name, propertyInfo.Name, DeAlias(GetTypeName(propertyInfo.PropertyType.ToString())), DeCapitalise(propertyInfo.Name), Environment.NewLine, "\t");
                     Console.WriteLine(property);
                     properties.Add(property);
