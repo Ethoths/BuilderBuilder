@@ -16,7 +16,7 @@ namespace BuilderBuilder
             var asm = Assembly.LoadFile(assembly);
             var classes = asm.GetTypes();
 
-            foreach (Type classe in classes)
+            foreach (var classe in classes)
             {
                 var boilerPlate = CreateBoilerPlate(classe);                                                
                 var propertyInfos = classe.GetProperties(BindingFlags.Public | BindingFlags.Instance);
